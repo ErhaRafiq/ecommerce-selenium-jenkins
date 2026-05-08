@@ -191,13 +191,12 @@ pipeline {
                 """
 
                 try {
-                    emailext(
-                        to:       "${recipient}",
-                        cc:       "qasimalik@gmail.com",
-                        subject:  "${emoji} ShopWave Ecommerce Tests ${status} — Build #${env.BUILD_NUMBER}",
-                        body:     body,
-                        mimeType: 'text/html'
-                    )
+                   emailext(
+    to: "${recipient},qasimalik@gmail.com",
+    subject: "${emoji} ShopWave Ecommerce Tests ${status} — Build #${env.BUILD_NUMBER}",
+    body: body,
+    mimeType: 'text/html'
+)
                 } catch (Exception e) {
                     echo "Email sending failed, but pipeline execution completed."
                     echo "Email error: ${e.getMessage()}"
